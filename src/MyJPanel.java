@@ -137,7 +137,8 @@ public class MyJPanel extends JPanel {
     private class Action implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            if (display.getText().length() > 0 && !IsOperator(display.getText().charAt(display.getText().length() - 1)))
+            if (display.getText().length() > 0 && (!IsOperator(display.getText().charAt(display.getText().length() - 1))||
+                    (")".indexOf(display.getText().charAt(display.getText().length()-1)))!=-1))
                 display.setText(display.getText() + e.getActionCommand());
         }
     }
