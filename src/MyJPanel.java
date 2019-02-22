@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 public class MyJPanel extends JPanel {
     private JTextField display;
     private JPanel panel;
-    private int countSkob=0;
+    private int countSkob = 0;
 
 
     public MyJPanel() {
@@ -72,20 +72,18 @@ public class MyJPanel extends JPanel {
     private class Skobki implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            if("(".indexOf(e.getActionCommand())!=-1)
-                if((display.getText().length()==0)||(IsOperator(display.getText().charAt(display.getText().length()-1)))) {
-                    display.setText(display.getText()+e.getActionCommand());
-                countSkob++;
-                }
-                else {
-                    display.setText(display.getText()+'*'+e.getActionCommand());
+            if ("(".indexOf(e.getActionCommand()) != -1)
+                if ((display.getText().length() == 0) || (IsOperator(display.getText().charAt(display.getText().length() - 1)))) {
+                    display.setText(display.getText() + e.getActionCommand());
+                    countSkob++;
+                } else {
+                    display.setText(display.getText() + '*' + e.getActionCommand());
                     countSkob++;
                 }
-                else
-                    if(countSkob>0&&Character.isDigit(display.getText().charAt(display.getText().length()-1))){
-                        display.setText(display.getText()+e.getActionCommand());
-                        countSkob--;
-                    }
+            else if (countSkob > 0 && Character.isDigit(display.getText().charAt(display.getText().length() - 1))) {
+                display.setText(display.getText() + e.getActionCommand());
+                countSkob--;
+            }
 
         }
     }
@@ -137,8 +135,8 @@ public class MyJPanel extends JPanel {
     private class Action implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            if (display.getText().length() > 0 && (!IsOperator(display.getText().charAt(display.getText().length() - 1))||
-                    (")".indexOf(display.getText().charAt(display.getText().length()-1)))!=-1))
+            if (display.getText().length() > 0 && (!IsOperator(display.getText().charAt(display.getText().length() - 1)) ||
+                    (")".indexOf(display.getText().charAt(display.getText().length() - 1))) != -1))
                 display.setText(display.getText() + e.getActionCommand());
         }
     }
